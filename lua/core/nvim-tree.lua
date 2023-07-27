@@ -12,9 +12,6 @@ local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup {
   sort_by = "case_sensitive",
-  view = {
-    width = 35,
-  },
   update_focused_file = {
     enable = true,
     update_cwd = true,
@@ -58,7 +55,7 @@ nvim_tree.setup {
     },
   },
   view = {
-    width = 30,
+    width = 35,
     side = "left",
     mappings = {
       list = {

@@ -35,7 +35,7 @@ local options = {
   -- Indentation settings
   shiftround = true,
   expandtab = true, -- convert tabs to spaces
-  shiftwidth = 2,  -- the number of spaces inserted for each indentation
+  shiftwidth = 2,   -- the number of spaces inserted for each indentation
   tabstop = 2,      -- insert 2 spaces for a tab
   softtabstop = 2,
 
@@ -44,7 +44,7 @@ local options = {
   number = true,             -- set numbered lines
   relativenumber = true,     -- set relative numbered lines
   numberwidth = 2,           -- set number column width to 2 {default 4}
-  signcolumn = "yes",                             -- always show the sign column, otherwise it would shift the text each time
+  signcolumn = "yes",        -- always show the sign column, otherwise it would shift the text each time
   wrap = false,              -- display lines as one long line
   scrolloff = 8,             -- is one of my fav
   sidescrolloff = 8,
@@ -53,12 +53,12 @@ local options = {
   -- Miscellaneous settings
   showcmd = true,
 
-  cmdheight = 2,                           -- more space in the neovim command line for displaying messages
-  termguicolors = true,                    -- set term gui colors (most terminals support this)
-  timeoutlen = 250,                        -- time to wait for a mapped sequence to complete (in milliseconds)
+  cmdheight = 2,          -- more space in the neovim command line for displaying messages
+  termguicolors = true,   -- set term gui colors (most terminals support this)
+  timeoutlen = 250,       -- time to wait for a mapped sequence to complete (in milliseconds)
 
-  linebreak = true,                        -- companion to wrap, don't split words
-  whichwrap = "bs<>[]hl",                  -- which "horizontal" keys are allowed to travel to prev/next line
+  linebreak = true,       -- companion to wrap, don't split words
+  whichwrap = "bs<>[]hl", -- which "horizontal" keys are allowed to travel to prev/next line
 }
 
 for k, v in pairs(options) do
@@ -66,10 +66,10 @@ for k, v in pairs(options) do
 end
 
 -- .shortmess = "ilmnrx"                        -- flags to shorten vim messages, see :help 'shortmess'
-vim.opt.shortmess:append "c"                           -- don't give |ins-completion-menu| messages
-vim.opt.iskeyword:append "-"                           -- hyphenated words recognized by searches
+vim.opt.shortmess:append "c"                          -- don't give |ins-completion-menu| messages
+vim.opt.iskeyword:append "-"                          -- hyphenated words recognized by searches
 
-vim.opt.runtimepath:remove("/usr/share/vim/vimfiles")  -- separate vim plugins from neovim in case vim still in use
+vim.opt.runtimepath:remove("/usr/share/vim/vimfiles") -- separate vim plugins from neovim in case vim still in use
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
@@ -89,5 +89,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
   group = highlight_group,
-  pattern= '*',
+  pattern = '*',
 })
