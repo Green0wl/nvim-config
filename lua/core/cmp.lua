@@ -45,6 +45,19 @@ local kind_icons = {
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
+local function border(hl_name)
+	return {
+		{ "╭", hl_name },
+		{ "─", hl_name },
+		{ "╮", hl_name },
+		{ "│", hl_name },
+		{ "╯", hl_name },
+		{ "─", hl_name },
+		{ "╰", hl_name },
+		{ "│", hl_name },
+	}
+end
+
 cmp.setup {
 	snippet = {
 		expand = function(args)
@@ -121,7 +134,7 @@ cmp.setup {
 	},
 	window = {
 		documentation = {
-			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+			border = border "CmpDocBorder",
 		},
 	},
 	experimental = {

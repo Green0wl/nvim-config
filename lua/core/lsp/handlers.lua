@@ -23,7 +23,7 @@ M.setup = function()
 	end
 
 	local config = {
-		virtual_text = true, -- disable virtual text
+		virtual_text = true,
 		signs = {
 			active = signs, -- show signs
 		},
@@ -51,26 +51,6 @@ M.setup = function()
 	})
 end
 
-local function lsp_keymaps(bufnr)
-	local opts = { noremap = true, silent = true }
-	local keymap = vim.api.nvim_buf_set_keymap
-	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-	keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
-	keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
-	keymap(bufnr, "n", "<leader>lI", "<cmd>LspInstallInfo<cr>", opts)
-	keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-	keymap(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
-	keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
-	keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-	keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-end
-
 M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
@@ -80,29 +60,13 @@ M.on_attach = function(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
-	lsp_keymaps(bufnr)
-	local status_ok, illuminate = pcall(require, "illuminate")
-	if not status_ok then
-		return
-	end
-	illuminate.on_attach(client)
-end
-
--- [[ Configure LSP ]]
---  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
-	-- NOTE: Remember that lua is a real programming language, and as such it is possible
-	-- to define small helper and utility functions so you don't have to repeat yourself
-	-- many times.
-	--
-	-- In this case, we create a function that lets us more easily define mappings specific
-	-- for LSP related items. It sets the mode, buffer and description for us each time.
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = 'LSP: ' .. desc
 		end
+		print(desc)
 
-		vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+		vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc, noremap = true, silent = true })
 	end
 
 	nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -127,10 +91,35 @@ local on_attach = function(_, bufnr)
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, '[W]orkspace [L]ist Folders')
 
+	nmap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", "[G]et [D]eclaration")
+	nmap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", "[G]et [d]efinition")
+	nmap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", "Show additional info on hover.")
+	nmap("gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", "[G]et [I]mplementation")
+	nmap("gr", "<cmd>lua vim.lsp.buf.references()<CR>", "[G]et [r]eferences")
+	nmap("gl", "<cmd>lua vim.diagnostic.open_float()<CR>", "Dia[g]nostic open F[l]oat window.")
+	nmap("<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", "[L]ua format current [f]ile.")
+	nmap("<leader>li", "<cmd>LspInfo<cr>", "[L]sp [i]nfo")
+	nmap("<leader>lI", "<cmd>LspInstallInfo<cr>", "[L]sp [I]nstall [I]nfo")
+	nmap("<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", "[L]ua [C]ode actions.")
+	nmap("<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", "Go to the next diagnostic hint/error/warring.")
+	nmap("<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>",
+		"Go to the previous diagnostic hint/error/warring.")
+	nmap("<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", "[L]ua [R]ename variable.")
+	nmap("<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "[L]ua [S]ignature help.")
+	nmap("<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", "Get diagnostic list with all errors/hints/warrings.")
+
 	-- Create a command `:Format` local to the LSP buffer
 	vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
 		vim.lsp.buf.format()
 	end, { desc = 'Format current buffer with LSP' })
+
+	local status_ok, illuminate = pcall(require, "illuminate")
+	if not status_ok then
+		return
+	end
+	illuminate.on_attach(client)
 end
+
+vim.diagnostic.config { virtual_text = true }
 
 return M

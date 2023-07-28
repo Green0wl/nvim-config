@@ -12,6 +12,9 @@ local servers = {
 	"angularls",
 	-- "bashls",
 	"jsonls",
+	"clangd",
+	"clang-format",
+	"codelldb",
 	-- "yamlls",
 }
 
