@@ -1,1 +1,28 @@
+<<<<<<< HEAD
 require("core")
+=======
+require "core.options"
+require "core.keymaps"
+require "core.plugins"
+require "core.colorscheme"
+require "core.cmp"
+require "core.lsp"
+require "core.telescope"
+require "core.gitsigns"
+require "core.treesitter"
+require "core.autopairs"
+require "core.comment"
+require "core.nvim-tree"
+require "core.bufferline"
+require "core.lualine"
+require "core.toggleterm"
+require "core.project"
+require "core.impatient"
+require "core.indentline"
+require "core.alpha"
+require "core.whichkey"
+require "core.autocommands"
+require "core.autoformat"
+require "core.dap"
+require "core.autotag"
+>>>>>>> 010764bf9d8bb3125e26dcbaa3a850cbe143b963

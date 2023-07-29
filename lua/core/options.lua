@@ -65,6 +65,10 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
+<<<<<<< HEAD
+=======
+-- .shortmess = "ilmnrx"                        -- flags to shorten vim messages, see :help 'shortmess'
+>>>>>>> 010764bf9d8bb3125e26dcbaa3a850cbe143b963
 vim.opt.shortmess:append "c"                          -- don't give |ins-completion-menu| messages
 vim.opt.iskeyword:append "-"                          -- hyphenated words recognized by searches
 
