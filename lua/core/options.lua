@@ -58,7 +58,7 @@ local options = {
   timeoutlen = 250,       -- time to wait for a mapped sequence to complete (in milliseconds)
 
   linebreak = true,       -- companion to wrap, don't split words
-  whichwrap = "bs<>[]hl", -- which "horizontal" keys are allowed to travel to prev/next line
+  whichwrap = "bs<>[]", 
 }
 
 for k, v in pairs(options) do
