@@ -13,9 +13,12 @@ local servers = {
 	-- "bashls",
 	"jsonls",
 	"clangd",
+	-- "yamlls",
+}
+
+local servers_without_config = {
 	"clang-format",
 	"codelldb",
-	-- "yamlls",
 }
 
 local settings = {
@@ -31,14 +34,22 @@ local settings = {
 	max_concurrent_installers = 4,
 }
 
+function TableConcat(t1, t2)
+	for i = 1, #t2 do
+		t1[#t1 + 1] = t2[i]
+	end
+	return t1
+end
+
 require("mason").setup(settings)
 require("mason-lspconfig").setup({
-	ensure_installed = servers,
+	ensure_installed = TableConcat(servers, servers_without_config),
 	automatic_installation = true,
 })
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then
+	print("no lspconfig plugin")
 	return
 end
 

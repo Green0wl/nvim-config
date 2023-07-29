@@ -29,6 +29,14 @@ local plugins = {
 	"lukas-reineke/indent-blankline.nvim",
 	"goolord/alpha-nvim",
 	"folke/which-key.nvim",
+	{
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		lazy = false,
+		config = function()
+			require("lsp_lines").setup()
+			vim.diagnostic.config({ virtual_lines = true })
+		end,
+	},
 
 	-- Colorschemes
 	"folke/tokyonight.nvim",
@@ -57,6 +65,7 @@ local plugins = {
 		"neovim/nvim-lspconfig",
 		config = require 'core.autoformat'.config
 	},
+	"onsails/lspkind.nvim",
 
 	-- enable LSP
 	"williamboman/mason.nvim",        -- simple to use language server installer

@@ -120,6 +120,15 @@ M.on_attach = function(client, bufnr)
 	illuminate.on_attach(client)
 end
 
-vim.diagnostic.config { virtual_text = true }
+vim.diagnostic.get(0, { severity = { min = vim.diagnostic.severity.HINT } })
+vim.diagnostic.config({
+	virtual_text = false,
+})
 
+vim.keymap.set(
+	"",
+	"<Leader>z",
+	require("lsp_lines").toggle,
+	{ desc = "Toggle lsp_lines" }
+)
 return M
