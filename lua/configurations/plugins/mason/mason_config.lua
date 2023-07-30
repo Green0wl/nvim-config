@@ -7,5 +7,6 @@ function M.config_func()
       install_args = {},
     },
   })
+  require("configurations.plugins.mason.mason_lspconfig_config").config_func()
 end
 return M
