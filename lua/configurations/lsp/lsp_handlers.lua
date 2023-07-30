@@ -38,7 +38,8 @@ function M.on_attach(_, bufnr)
 
   nmap(bufnr, 'gr', vim.lsp.buf.references, "[G]et [R]eferences")
   nmap(bufnr, '<space>f', function()
-    vim.lsp.buf.format { async = true }
+    vim.lsp.buf.format({ bufnr = bufnr })
+    vim.diagnostic.enable(bufnr)
   end, "[F]ormat current buffer.")
 end
 
