@@ -56,18 +56,20 @@ keymap("n", "L", ":BufferLineCycleNext<cr>", opts)
 
 -- Nvim-Tree toggling of Explorer
 local function opts(desc)
-  return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  return { desc = "nvim-tree: " .. desc, noremap = true, silent = true, nowait = true }
 end
 
 local tree_open = false
 function TOGGLE_TREE()
-  if tree_open then require("nvim-tree.api").tree.close()
-  else 
-    require("nvim-tree.api").tree.find_file { open = true } 
+  if tree_open then
+    require("nvim-tree.api").tree.close()
+  else
+    require("nvim-tree.api").tree.find_file { open = true }
     require("nvim-tree.api").tree.focus()
   end
   tree_open = not tree_open
 end
+
 vim.api.nvim_set_keymap('n', '<C-n>', ':lua TOGGLE_TREE()<CR>', opts('Toggle Tree File explorer.'))
 
 -- Global mappings.
@@ -76,3 +78,12 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+-- for ray-x/lsp_signature.nvim
+vim.keymap.set({ 'n' }, '<C-k>', function()
+  require('lsp_signature').toggle_float_win()
+end, { silent = true, noremap = true, desc = 'Toggle signature floating window help.' })
+
+vim.keymap.set({ 'n' }, '<Leader>k', function()
+  vim.lsp.buf.signature_help()
+end, { silent = true, noremap = true, desc = 'Toggle signature help.' })

@@ -2,7 +2,7 @@ local M = {}
 function M.config_func()
   local lspconfig = require('lspconfig')
   local opts = {}
-  local servers = require ("configurations.plugins.mason.mason_ensure_installed").ensure_installed
+  local servers = require("configurations.plugins.mason.mason_ensure_installed").ensure_installed
 
   for _, server in pairs(servers) do
     server = vim.split(server, "@")[1]
@@ -18,4 +18,5 @@ function M.config_func()
     lspconfig[server].setup(opts)
   end
 end
+
 return M

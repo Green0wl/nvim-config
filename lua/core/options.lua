@@ -8,9 +8,6 @@ local options = {
   backup = false,            -- creates a backup file
   clipboard = "unnamedplus", -- allows neovim to access the system clipboard
 
-  -- Completion settings
-  completeopt = { "menuone", "noselect" }, -- mostly just for cmp
-
   -- Appearance settings
   foldlevelstart = 99,
   conceallevel = 0,       -- so that `` is visible in markdown files
@@ -53,12 +50,12 @@ local options = {
   -- Miscellaneous settings
   showcmd = true,
 
-  cmdheight = 2,          -- more space in the neovim command line for displaying messages
-  termguicolors = true,   -- set term gui colors (most terminals support this)
-  timeoutlen = 250,       -- time to wait for a mapped sequence to complete (in milliseconds)
+  cmdheight = 2,        -- more space in the neovim command line for displaying messages
+  termguicolors = true, -- set term gui colors (most terminals support this)
+  timeoutlen = 250,     -- time to wait for a mapped sequence to complete (in milliseconds)
 
-  linebreak = true,       -- companion to wrap, don't split words
-  whichwrap = "bs<>[]", 
+  linebreak = true,     -- companion to wrap, don't split words
+  whichwrap = "bs<>[]",
 }
 
 for k, v in pairs(options) do
