@@ -8,5 +8,7 @@ function M.config_func()
     },
   })
   require("configurations.plugins.mason.mason_lspconfig_config").config_func()
+  require("configurations.plugins.mason_nvim_dap.mason_nvim_dap_config").config_func()
 end
+
 return M
