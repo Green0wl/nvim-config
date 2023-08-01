@@ -3,6 +3,8 @@ function M.config_func()
   local configs = require("nvim-treesitter.configs")
 
   configs.setup({
+    modules = {},
+    ignore_install = {},
     ensure_installed = require("configurations.plugins.nvim_treesitter_configs.ensure_installed_treesitter"),
     auto_install = true,
     sync_install = false,

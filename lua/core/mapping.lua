@@ -119,3 +119,34 @@ end, opts_desc("Debugging: Get scopes."))
 keymap("n", "<leader>q", function()
   require('dap').disconnect()
 end, opts_desc("Debugging: Terminate session and close UI."))
+
+-- for telescope.nvim
+local M = {}
+
+function M.telescope_keymap_setup()
+  local builtin = require('telescope.builtin')
+  keymap('n', '<leader>ff', builtin.find_files, opts_desc("Telescope: Find by Filename."))
+  keymap('n', '<leader>fg', builtin.live_grep, opts_desc("Telescope: Find by Grep."))
+  keymap('n', '<leader><leader>', builtin.buffers, opts_desc("Telescope: Find in buffers."))
+  keymap('n', '<leader>fh', builtin.help_tags, opts_desc("Telescope: Find through help tags."))
+  keymap('n', '<leader>tk', builtin.keymaps, opts_desc("Telescope: Get all keymaps."))
+  keymap('n', '<leader>fi', builtin.git_files, opts_desc("Telescope: Search through Git Files."))
+  keymap('n', '<leader>fs', builtin.spell_suggest, opts_desc("Telescope: Spelling Suggestions."))
+  keymap('n', '<leader>/', builtin.current_buffer_fuzzy_find, opts_desc("Telescope: Fuzzy search in the current Buffer."))
+  keymap('n', '<leader>fr', builtin.lsp_references, opts_desc("Telescope LSP: Get outgoing calls of function/variable."))
+  keymap('n', '<leader>fd', builtin.diagnostics, opts_desc("Telescope LSP: Get diagnostics list."))
+  keymap('n', '<leader>v', builtin.treesitter, opts_desc("Telescope: Get current file variables."))
+
+  keymap('n', '<C-i>', builtin.lsp_incoming_calls, opts_desc("Telescope LSP: Get incoming calls of function/variable."))
+  keymap('n', '<C-o>', builtin.lsp_outgoing_calls, opts_desc(""))
+
+  keymap('n', '<A-i>', builtin.lsp_implementations, opts_desc("Telescope LSP: Get implementations."))
+  keymap('n', '<A-d>', builtin.lsp_definitions, opts_desc("Telescope LSP: Get definitions."))
+  keymap('n', '<A-t>', builtin.lsp_type_definitions, opts_desc("Telescope LSP: Get Type definitions."))
+  keymap('n', '<A-T>', builtin.git_status, opts_desc("Telescope: Get Git Status."))
+
+  keymap('n', '<A-w>', builtin.grep_string,
+    opts_desc("Telescope: Search for a string/selection/word in current working directory."))
+end
+
+return M
