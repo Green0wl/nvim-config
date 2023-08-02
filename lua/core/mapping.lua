@@ -149,4 +149,8 @@ function M.telescope_keymap_setup()
     opts_desc("Telescope: Search for a string/selection/word in current working directory."))
 end
 
+function M.bbye_keymap_setup()
+  keymap("n", "<leader>c", ":Bdelete<cr>", opts_desc("Close current buffer."))
+end
+
 return M
