@@ -168,4 +168,8 @@ function M.toggleterm_keymap_setup()
   vim.cmd('autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()')
 end
 
+function M.todo_keymap_setup()
+  keymap("n", "<leader>ft", ":TodoTelescope<cr>", opts_desc("Telescope: Find TODOs."))
+end
+
 return M
