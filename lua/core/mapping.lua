@@ -153,4 +153,19 @@ function M.bbye_keymap_setup()
   keymap("n", "<leader>c", ":Bdelete<cr>", opts_desc("Close current buffer."))
 end
 
+function M.toggleterm_keymap_setup()
+  keymap({ "n", "t" }, "<A-`>", "<C-\\><C-n>:TermSelect<cr>", opts_desc("Select terminal to use."))
+
+  function _G.set_terminal_keymaps()
+    local term_opts = { buffer = 0 }
+    vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], term_opts)
+    vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], term_opts)
+    vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], term_opts)
+    vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], term_opts)
+    vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], term_opts)
+  end
+
+  vim.cmd('autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()')
+end
+
 return M
