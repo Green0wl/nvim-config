@@ -6,5 +6,7 @@ M.ensure_installed = {
   "tsserver",
   "csharp_ls",
   "cssls",
+  "html",
+  "pylsp",
 }
 return M
