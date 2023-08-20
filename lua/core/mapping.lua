@@ -55,8 +55,8 @@ keymap("n", "H", ":BufferLineCyclePrev<cr>", opts)
 keymap("n", "L", ":BufferLineCycleNext<cr>", opts)
 
 -- Nvim-Tree toggling of Explorer
-local function opts_desc(desc)
-  return { desc = desc, noremap = true, silent = true, nowait = true }
+local function opts_desc(desc, bufnr, expr)
+  return { desc = desc, noremap = true, silent = true, nowait = true, buffer = bufnr or 0, expr = expr or false }
 end
 
 local tree_open = false
@@ -70,7 +70,7 @@ function TOGGLE_TREE()
   tree_open = not tree_open
 end
 
-keymap('n', '<C-n>', ':lua TOGGLE_TREE()<CR>', opts_desc('Nvim Tree: Toggle Tree File explorer.'))
+keymap('n', '<C-n>', ':lua TOGGLE_TREE()<CR>', opts_desc('Nvim Tree: Toggle Tree File explorer.', 0))
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 keymap('n', '<space>e', vim.diagnostic.open_float, opts_desc("Diagnostic: Open Diagnostic floating window."))
@@ -170,6 +170,41 @@ end
 
 function M.todo_keymap_setup()
   keymap("n", "<leader>ft", ":TodoTelescope<cr>", opts_desc("Telescope: Find TODOs."))
+end
+
+function M.gitsigns_keymap_setup(bufnr)
+  local gs = package.loaded.gitsigns
+
+  -- Navigation
+  keymap('n', ']c', function()
+    if vim.wo.diff then return ']c' end
+    vim.schedule(function() gs.next_hunk() end)
+    return '<Ignore>'
+  end, opts_desc("Gitsigns: Next Hunk.", bufnr, true))
+
+  keymap('n', '[c', function()
+    if vim.wo.diff then return '[c' end
+    vim.schedule(function() gs.prev_hunk() end)
+    return '<Ignore>'
+  end, opts_desc("Gitsigns: Previous Hunk.", bufnr, true))
+
+  -- Actions
+  keymap('n', '<leader>hs', gs.stage_hunk, opts_desc("Gitsigns: Stage Hunk."))
+  keymap('n', '<leader>hr', gs.reset_hunk, opts_desc("Gitsigns: Reset Hunk."))
+  keymap('v', '<leader>hs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
+  keymap('v', '<leader>hr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
+  keymap('n', '<leader>hS', gs.stage_buffer, opts_desc("Gitsigns: Stage Buffer."))
+  keymap('n', '<leader>hu', gs.undo_stage_hunk, opts_desc("Gitsigns: Undo Stage Hunk."))
+  keymap('n', '<leader>hR', gs.reset_buffer, opts_desc("Gitsigns: Reset Buffer."))
+  keymap('n', '<leader>hp', gs.preview_hunk, opts_desc("Gitsigns: Preview Hunk."))
+  keymap('n', '<leader>hb', function() gs.blame_line { full = true } end, opts_desc("Gitsigns: Blame Line."))
+  keymap('n', '<leader>tb', gs.toggle_current_line_blame, opts_desc("Gitsigns: Toggle current line blame."))
+  keymap('n', '<leader>hd', gs.diffthis, opts_desc("Gitsigns: Diff this."))
+  keymap('n', '<leader>hD', function() gs.diffthis('~') end, opts_desc("Gitsigns: Diff only modified this."))
+  keymap('n', '<leader>td', gs.toggle_deleted, opts_desc("Gitsigns: Toggle Deleted."))
+
+  -- Text object
+  keymap({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 end
 
 return M
