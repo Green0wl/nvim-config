@@ -172,6 +172,14 @@ function M.todo_keymap_setup()
   keymap("n", "<leader>ft", ":TodoTelescope<cr>", opts_desc("Telescope: Find TODOs."))
 end
 
+function M.sniprun_keymap_setup()
+  keymap("n", "<leader>sr", require('sniprun').run, opts_desc("Sniprun: Run current line in Normal Mode."))
+  keymap("v", "<leader>sr", ":lua require'sniprun'.run('v')<cr>",
+    opts_desc("Sniprun: Run current selection in Visual Mode."))
+
+  keymap("n", "<leader>sc", require 'sniprun.display'.close_all, opts_desc("Sniprun: Close Sniprun."))
+end
+
 function M.gitsigns_keymap_setup()
   local gs = package.loaded.gitsigns
 
