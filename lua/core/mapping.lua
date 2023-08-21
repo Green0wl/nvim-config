@@ -55,8 +55,8 @@ keymap("n", "H", ":BufferLineCyclePrev<cr>", opts)
 keymap("n", "L", ":BufferLineCycleNext<cr>", opts)
 
 -- Nvim-Tree toggling of Explorer
-local function opts_desc(desc, bufnr, expr)
-  return { desc = desc, noremap = true, silent = true, nowait = true, buffer = bufnr or 0, expr = expr or false }
+local function opts_desc(desc, expr)
+  return { desc = desc, noremap = true, silent = true, nowait = true, expr = expr or false }
 end
 
 local tree_open = false
@@ -70,7 +70,7 @@ function TOGGLE_TREE()
   tree_open = not tree_open
 end
 
-keymap('n', '<C-n>', ':lua TOGGLE_TREE()<CR>', opts_desc('Nvim Tree: Toggle Tree File explorer.', 0))
+keymap('n', '<C-n>', ':lua TOGGLE_TREE()<CR>', opts_desc('Nvim Tree: Toggle Tree File explorer.'))
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 keymap('n', '<space>e', vim.diagnostic.open_float, opts_desc("Diagnostic: Open Diagnostic floating window."))
@@ -172,7 +172,7 @@ function M.todo_keymap_setup()
   keymap("n", "<leader>ft", ":TodoTelescope<cr>", opts_desc("Telescope: Find TODOs."))
 end
 
-function M.gitsigns_keymap_setup(bufnr)
+function M.gitsigns_keymap_setup()
   local gs = package.loaded.gitsigns
 
   -- Navigation
@@ -180,13 +180,13 @@ function M.gitsigns_keymap_setup(bufnr)
     if vim.wo.diff then return ']c' end
     vim.schedule(function() gs.next_hunk() end)
     return '<Ignore>'
-  end, opts_desc("Gitsigns: Next Hunk.", bufnr, true))
+  end, opts_desc("Gitsigns: Next Hunk.", true))
 
   keymap('n', '[c', function()
     if vim.wo.diff then return '[c' end
     vim.schedule(function() gs.prev_hunk() end)
     return '<Ignore>'
-  end, opts_desc("Gitsigns: Previous Hunk.", bufnr, true))
+  end, opts_desc("Gitsigns: Previous Hunk.", true))
 
   -- Actions
   keymap('n', '<leader>hs', gs.stage_hunk, opts_desc("Gitsigns: Stage Hunk."))
