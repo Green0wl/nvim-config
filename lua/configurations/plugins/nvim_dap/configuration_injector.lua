@@ -12,6 +12,8 @@ function M.inject_configurations()
       dap.configurations[temp_conf.lang] = temp_conf.conf
     end
   end
+
+  require("nvim-dap-virtual-text").setup()
 end
 
 return M
