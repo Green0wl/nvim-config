@@ -4,6 +4,9 @@ function M.config_func()
 
   configs.setup({
     modules = {},
+    autotag = {
+      enable = true,
+    },
     ignore_install = {},
     ensure_installed = require("configurations.plugins.nvim_treesitter_configs.ensure_installed_treesitter"),
     auto_install = true,
