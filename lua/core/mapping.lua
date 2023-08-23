@@ -237,11 +237,11 @@ function M.coc_keymap_setup()
   keymap("n", "K", '<CMD>lua _G.show_docs()<CR>', opts_desc("COC: Show documentation."))
 
   -- Symbol renaming
-  keymap("n", "<leader>rn", "<Plug>(coc-rename)", opts_desc("COC: Rename symbol."))
+  keymap("n", "<leader>rn", "<Plug>(coc-rename)", opts_desc("COC: Rename symbol.", false))
 
   -- Formatting selected code
-  keymap("x", "<leader>f", "<Plug>(coc-format-selected)", opts_desc("COC: Formatting selected code."))
-  keymap("n", "<leader>f", "<Plug>(coc-format-selected)", opts_desc("COC: Formatting selected code."))
+  keymap("x", "<leader>f", "<Plug>(coc-format-selected)", { silent = true })
+  keymap("n", "<leader>f", "<Plug>(coc-format-selected)", { silent = true })
 
   -- Apply codeAction to the selected region
   keymap("x", "<leader>a", "<Plug>(coc-codeaction-selected)",
@@ -270,10 +270,9 @@ function M.coc_keymap_setup()
   keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], optss)
 
   -- Use <c-j> to trigger snippets
-  keyset("i", "<cr>", [[coc#pum#visible() ? <Plug>(coc-snippets-expand-jump) : print("no")]])
+  keyset("i", "<cr>", "<Plug>(coc-snippets-expand-jump)")
   -- Use <c-space> to trigger completion
   keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
-  vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? "<C-Y>" : "<CR>"', { expr = true })
 end
 
 return M

@@ -2,10 +2,29 @@
   "languageserver": {
     "lua": {
       "command": "~/.local/share/nvim/mason/bin/lua-language-server",
-      "filetypes": ["lua"],
+      "filetypes": [
+        "lua"
+      ],
+      "rootPatterns": [".git/"],
       "settings": {
-        "Lua.diagnostics.globals":  [ "vim" ]
+        "Lua": {
+          "workspace": {
+            "maxPreload": 2000,
+            "preloadFileSize": 1000
+          },
+          "diagnostics": {
+            "enable": true,
+            "globals": ["hs", "vim", "it", "describe", "before_each", "after_each"],
+            "disable": ["lowercase-global"]
+          },
+          "completion": {
+            "keywordSnippet": "Disable"
+          }
+        }
       }
-    }
+    },
   },
+  "Lua.diagnostics.globals": [
+    "vim"
+  ]
 }
