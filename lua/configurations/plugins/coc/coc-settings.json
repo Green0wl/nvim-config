@@ -1,0 +1,11 @@
+{
+  "languageserver": {
+    "lua": {
+      "command": "~/.local/share/nvim/mason/bin/lua-language-server",
+      "filetypes": ["lua"],
+      "settings": {
+        "Lua.diagnostics.globals":  [ "vim" ]
+      }
+    }
+  },
+}
