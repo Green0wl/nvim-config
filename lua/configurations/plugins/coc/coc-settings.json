@@ -63,8 +63,10 @@
         "typescript.tsx"
       ],
       "trace.server.verbosity": "verbose"
-    }
+    },
   },
+
+
   "Lua.diagnostics.globals": [
     "vim"
   ],
@@ -77,4 +79,7 @@
   "python.analysis.diagnosticSeverityOverrides": {
     "reportPrivateImportUsage": "none",
   },
+
+  "rome.enable": true,
+  "rome.bin": "/usr/local/bin/rome",
 }

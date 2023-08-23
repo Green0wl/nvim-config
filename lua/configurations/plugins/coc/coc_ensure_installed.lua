@@ -5,4 +5,5 @@ return {
   "coc-snippets",
   "coc-omnisharp",
   "coc-angular",
+  "coc-rome",
 }
