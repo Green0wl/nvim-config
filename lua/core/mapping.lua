@@ -1,4 +1,4 @@
-local opts = { noremap = true, silent = true, replace_keycodes = false }
+local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
 -- Keymaps for better default experience
@@ -213,67 +213,6 @@ function M.gitsigns_keymap_setup()
 
   -- Text object
   keymap({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-end
-
-function M.coc_keymap_setup()
-  -- GoTo code navigation
-  keymap("n", "gd", "<Plug>(coc-definition)", opts_desc("COC: Go to definition."))
-  keymap("n", "gy", "<Plug>(coc-type-definition)", opts_desc("COC: Go to type definition."))
-  keymap("n", "gi", "<Plug>(coc-implementation)", opts_desc("COC: Go to implementation."))
-  keymap("n", "gr", "<Plug>(coc-references)", opts_desc("COC: Go to references."))
-
-  -- Use K to show documentation in preview window
-  function _G.show_docs()
-    local cw = vim.fn.expand('<cword>')
-    if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
-      vim.api.nvim_command('h ' .. cw)
-    elseif vim.api.nvim_eval('coc#rpc#ready()') then
-      vim.fn.CocActionAsync('doHover')
-    else
-      vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
-    end
-  end
-
-  keymap("n", "K", '<CMD>lua _G.show_docs()<CR>', opts_desc("COC: Show documentation."))
-
-  -- Symbol renaming
-  keymap("n", "<leader>rn", "<Plug>(coc-rename)", opts_desc("COC: Rename symbol."))
-
-  -- Formatting selected code
-  keymap("x", "<leader>f", "<Plug>(coc-format-selected)", opts_desc("COC: Formatting selected code."))
-  keymap("n", "<leader>f", "<Plug>(coc-format-selected)", opts_desc("COC: Formatting selected code."))
-
-  -- Apply codeAction to the selected region
-  keymap("x", "<leader>a", "<Plug>(coc-codeaction-selected)",
-    opts_desc("COC: Code actions for selected region or current string."))
-  keymap("n", "<leader>a", "<Plug>(coc-codeaction-selected)",
-    opts_desc("COC: Code actions for selected region or current string."))
-
-  -- Remap keys for apply code actions at the cursor position.
-  keymap("n", "<leader>ca", "<Plug>(coc-codeaction-cursor)", opts_desc("COC: Code actions under cursor."))
-  -- Remap keys for apply source code actions for current file.
-  keymap("n", "<leader>as", "<Plug>(coc-codeaction-source)", opts_desc("COC: Code actions for current File."))
-  -- Apply the most preferred quickfix action on the current line.
-  keymap("n", "<leader>qf", "<Plug>(coc-fix-current)", opts_desc("COC: Fix current (Quickfix)."))
-
-  local keyset = vim.keymap.set
-  -- Autocomplete
-  function _G.check_back_space()
-    local col = vim.fn.col('.') - 1
-    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
-  end
-
-  local optss = {silent = true, noremap = true, expr = true, replace_keycodes = false}
-
-  -- Make <CR> to accept selected completion item or notify coc.nvim to format
-  -- <C-g>u breaks current undo, please make your own choice
-  keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], optss)
-
-  -- Use <c-j> to trigger snippets
-  keyset("i", "<cr>", [[coc#pum#visible() ? <Plug>(coc-snippets-expand-jump) : print("no")]])
-  -- Use <c-space> to trigger completion
-  keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
-  vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? "<C-Y>" : "<CR>"', { expr = true })
 end
 
 return M
