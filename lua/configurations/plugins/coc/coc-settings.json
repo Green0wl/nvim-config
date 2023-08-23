@@ -5,7 +5,9 @@
       "filetypes": [
         "lua"
       ],
-      "rootPatterns": [".git/"],
+      "rootPatterns": [
+        ".git/"
+      ],
       "settings": {
         "Lua": {
           "workspace": {
@@ -14,8 +16,17 @@
           },
           "diagnostics": {
             "enable": true,
-            "globals": ["hs", "vim", "it", "describe", "before_each", "after_each"],
-            "disable": ["lowercase-global"]
+            "globals": [
+              "hs",
+              "vim",
+              "it",
+              "describe",
+              "before_each",
+              "after_each"
+            ],
+            "disable": [
+              "lowercase-global"
+            ]
           },
           "completion": {
             "keywordSnippet": "Disable"
@@ -26,5 +37,14 @@
   },
   "Lua.diagnostics.globals": [
     "vim"
-  ]
+  ],
+
+
+  "pyright.enable": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.autoSearchPaths": true,
+  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportPrivateImportUsage": "none",
+  },
 }
