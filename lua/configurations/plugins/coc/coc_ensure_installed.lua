@@ -3,4 +3,5 @@ return {
   "coc-json",
   "coc-lua",
   "coc-snippets",
+  "coc-omnisharp",
 }

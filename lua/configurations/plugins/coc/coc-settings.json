@@ -34,6 +34,18 @@
         }
       }
     },
+    "csharp-ls": {
+      "command": "csharp-ls",
+      "filetypes": [
+        "cs"
+      ],
+      "rootPatterns": [
+        "*.csproj",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ]
+    }
   },
   "Lua.diagnostics.globals": [
     "vim"
