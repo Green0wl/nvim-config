@@ -45,6 +45,24 @@
         ".git/",
         ".hg/"
       ]
+    },
+    "angular": {
+      "command": "ngserver",
+      "args": [
+        "--stdio",
+        "--tsProbeLocations",
+        "/usr/local/lib/node_modules/typescript/lib",
+        "--ngProbeLocations",
+        "/usr/local/lib/node_modules/@angular/language-service"
+      ],
+      "filetypes": [
+        "ts",
+        "typescript",
+        "html",
+        "typescriptreact",
+        "typescript.tsx"
+      ],
+      "trace.server.verbosity": "verbose"
     }
   },
   "Lua.diagnostics.globals": [

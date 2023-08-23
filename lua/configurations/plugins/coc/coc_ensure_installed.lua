@@ -4,4 +4,5 @@ return {
   "coc-lua",
   "coc-snippets",
   "coc-omnisharp",
+  "coc-angular",
 }
