@@ -6,4 +6,6 @@ return {
   "coc-omnisharp",
   "coc-angular",
   "coc-rome",
+  "coc-tsserver",
+  "coc-eslint",
 }

@@ -82,4 +82,9 @@
 
   "rome.enable": true,
   "rome.bin": "/usr/local/bin/rome",
+
+  "eslint.packageManager": "yarn",
+  "eslint.nodePath": ".yarn/sdks",
+  "workspace.workspaceFolderCheckCwd": false,
+  "tsserver.tsdk": "/usr/local/lib/node_modules/typescript/lib"
 }
