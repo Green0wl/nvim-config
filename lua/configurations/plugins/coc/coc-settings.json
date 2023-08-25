@@ -74,6 +74,7 @@
   "coc.preferences.formatOnSave": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
+    "scss",
     "markdown",
     "typescript",
     "javascript",
