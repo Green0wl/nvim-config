@@ -2,12 +2,8 @@
   "languageserver": {
     "lua": {
       "command": "~/.local/share/nvim/mason/bin/lua-language-server",
-      "filetypes": [
-        "lua"
-      ],
-      "rootPatterns": [
-        ".git/"
-      ],
+      "filetypes": ["lua"],
+      "rootPatterns": [".git/"],
       "settings": {
         "Lua": {
           "workspace": {
@@ -24,9 +20,7 @@
               "before_each",
               "after_each"
             ],
-            "disable": [
-              "lowercase-global"
-            ]
+            "disable": ["lowercase-global"]
           },
           "completion": {
             "keywordSnippet": "Disable"
@@ -36,15 +30,8 @@
     },
     "csharp-ls": {
       "command": "csharp-ls",
-      "filetypes": [
-        "cs"
-      ],
-      "rootPatterns": [
-        "*.csproj",
-        ".vim/",
-        ".git/",
-        ".hg/"
-      ]
+      "filetypes": ["cs"],
+      "rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"]
     },
     "angular": {
       "command": "ngserver",
@@ -63,21 +50,17 @@
         "typescript.tsx"
       ],
       "trace.server.verbosity": "verbose"
-    },
+    }
   },
 
-
-  "Lua.diagnostics.globals": [
-    "vim"
-  ],
-
+  "Lua.diagnostics.globals": ["vim"],
 
   "pyright.enable": true,
   "python.analysis.autoImportCompletions": true,
   "python.analysis.autoSearchPaths": true,
   "python.analysis.diagnosticMode": "workspace",
   "python.analysis.diagnosticSeverityOverrides": {
-    "reportPrivateImportUsage": "none",
+    "reportPrivateImportUsage": "none"
   },
 
   "rome.enable": true,
@@ -86,5 +69,14 @@
   "eslint.packageManager": "yarn",
   "eslint.nodePath": ".yarn/sdks",
   "workspace.workspaceFolderCheckCwd": false,
-  "tsserver.tsdk": "/usr/local/lib/node_modules/typescript/lib"
+  "tsserver.tsdk": "/usr/local/lib/node_modules/typescript/lib",
+
+  "coc.preferences.formatOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "typescript",
+    "javascript",
+    "json"
+  ]
 }
