@@ -15,4 +15,8 @@ return {
   "python",
   "regex",
   "scss",
+  "git_config",
+  "git_rebase",
+  "gitattributes",
+  "gitcommit",
 }
