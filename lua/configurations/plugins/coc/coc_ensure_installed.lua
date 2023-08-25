@@ -8,5 +8,4 @@ return {
   "coc-rome",
   "coc-tsserver",
   "coc-eslint",
-  "coc-prettier",
 }
