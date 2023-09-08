@@ -10,4 +10,5 @@ return {
   "coc-eslint",
   "coc-prettier",
   "coc-docker",
+  "coc-clangd",
 }
