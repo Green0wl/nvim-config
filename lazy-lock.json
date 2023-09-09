@@ -1,5 +1,6 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
+  "YouCompleteMe": { "branch": "master", "commit": "4f1dcf4f971517b5a41d420b3671259f917e3827" },
   "bufferline.nvim": { "branch": "main", "commit": "d24378edc14a675c820a303b4512af3bbc5761e9" },
   "catppuccin": { "branch": "main", "commit": "a937d546f4783a1ff67f84043d2d7871ad4ecd83" },
   "coc.nvim": { "branch": "release", "commit": "a18ac7e9c34d6b0d7bc4d81dedc0db1d9e229371" },
