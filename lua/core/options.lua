@@ -16,7 +16,6 @@ local options = {
   incsearch = true,       -- search as characters are entered
   ignorecase = true,      -- ignore case in search patterns
   mouse = "",             -- allow the mouse to be used in neovim
-  mousehide = true,
   pumheight = 10,         -- pop up menu height
   showmode = false,
   showtabline = 2,        -- always show tabs
