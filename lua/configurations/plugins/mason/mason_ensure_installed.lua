@@ -8,5 +8,6 @@ M.ensure_installed = {
   "cssls",
   "html",
   "pylsp",
+  "biome",
 }
 return M
