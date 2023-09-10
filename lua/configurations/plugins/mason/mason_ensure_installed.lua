@@ -9,5 +9,6 @@ M.ensure_installed = {
   "html",
   "pylsp",
   "biome",
+  "cmake",
 }
 return M
