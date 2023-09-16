@@ -10,5 +10,6 @@ M.ensure_installed = {
   "pylsp",
   "biome",
   "cmake",
+  "stylelint_lsp",
 }
 return M
