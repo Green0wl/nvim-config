@@ -215,4 +215,9 @@ function M.gitsigns_keymap_setup()
   keymap({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 end
 
+function M.overseer_keymap_setup()
+  keymap('n', '<leader>or', ':OverseerRun<cr>', opts_desc("Overseer: Run Task."))
+  keymap('n', '<leader>ot', ':OverseerToggle<cr>', opts_desc("Overseer: Toggle Overseer panel."))
+end
+
 return M
