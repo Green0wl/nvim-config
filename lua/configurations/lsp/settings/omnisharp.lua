@@ -1,4 +1,4 @@
-return {
+local omnisharp_opts = {
   cmd = { "omnisharp" },
   -- Enables support for reading code style, naming convention and analyzer
   -- settings from .editorconfig.
@@ -37,3 +37,7 @@ return {
 
   capabilities = require("configurations.lsp.lsp_handlers").capabilities,
 }
+
+omnisharp_opts.capabilities.documentFormattingProvider = true
+
+return omnisharp_opts
