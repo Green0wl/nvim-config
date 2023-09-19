@@ -30,8 +30,10 @@ return {
     })
     vim.api.nvim_create_autocmd("VimLeavePre", {
       callback = function()
-        local resessionSavePath = (get_git_root() == ".") and vim.fn.getcwd() or get_git_root()
-        resession.save(resessionSavePath, { dir = "dirsession", notify = false })
+        if vim.fn.argc(-1) == 0 then
+          local resessionSavePath = (get_git_root() == ".") and vim.fn.getcwd() or get_git_root()
+          resession.save(resessionSavePath, { dir = "dirsession", notify = false })
+        end
       end,
     })
   end
