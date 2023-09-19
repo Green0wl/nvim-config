@@ -6,8 +6,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local client = vim.lsp.get_client_by_id(client_id)
     local bufnr = args.buf
 
+    local allowedClients = { "omnisharp" }
     -- Only attach to clients that support document formatting
-    if not client.server_capabilities.documentFormattingProvider then
+    if not client.server_capabilities.documentFormattingProvider and not vim.tbl_contains(allowedClients, client.name) then
       return
     end
 
