@@ -1,3 +1,26 @@
 {
-    "workspace.checkThirdParty": false
+    "workspace.checkThirdParty": false,
+    "workspace.library": [
+        "/home/greenowl/.config/nvim",
+        "/home/greenowl/.local/share/nvim/lazy/lazy.nvim",
+        "/home/greenowl/.local/share/nvim/lazy/nvim-lspconfig",
+        "/home/greenowl/.local/share/nvim/lazy/cmp-path",
+        "/home/greenowl/.local/share/nvim/lazy/project.nvim",
+        "/home/greenowl/.local/share/nvim/lazy/nvim-notify",
+        "/home/greenowl/.local/share/nvim/lazy/nvim-dap",
+        "/home/greenowl/.local/share/nvim/lazy/nvim-dap-ui",
+        "/home/greenowl/.local/share/nvim/lazy/nvim-treesitter",
+        "/home/greenowl/.local/share/nvim/lazy/neogen",
+        "/home/greenowl/.local/share/nvim/lazy/telescope-ui-select.nvim",
+        "/home/greenowl/.local/share/nvim/lazy/telescope-fzf-native.nvim",
+        "/home/greenowl/.local/share/nvim/lazy/plenary.nvim",
+        "/home/greenowl/.local/share/nvim/lazy/telescope.nvim",
+        "/home/greenowl/.local/share/nvim/lazy/cmp-cmdline",
+        "/home/greenowl/.local/share/nvim/lazy/gruvbox.nvim",
+        "/usr/local/share/nvim/runtime",
+        "/usr/local/lib/nvim",
+        "/home/greenowl/.local/state/nvim/lazy/readme",
+        "/home/greenowl/.local/share/nvim/lazy/cmp-path/after",
+        "/home/greenowl/.local/share/nvim/lazy/cmp-cmdline/after"
+    ]
 }

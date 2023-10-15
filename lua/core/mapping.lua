@@ -227,4 +227,21 @@ function M.resession_keymap_setup(resession)
   vim.keymap.set('n', '<leader>sd', resession.delete)
 end
 
+function M.neogen_keymap_setup()
+  keymap('n', "<leader>nc", function()
+      require('neogen').generate({ type = 'class' })
+    end,
+    opts_desc("Neogen: Generate class annotations."))
+
+  keymap('n', "<leader>nt", function()
+      require('neogen').generate({ type = 'type' })
+    end,
+    opts_desc("Neogen: Generate type annotations."))
+
+  keymap('n', "<leader>nf", function()
+      require('neogen').generate({ type = 'func' })
+    end,
+    opts_desc("Neogen: Generate function annotations."))
+end
+
 return M
