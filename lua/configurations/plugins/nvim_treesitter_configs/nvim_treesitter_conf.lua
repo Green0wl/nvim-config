@@ -25,10 +25,6 @@ function M.config_func()
     autopairs = {
       enable = true,
     },
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = true,
-    },
     textobjects = {
       select = {
         enable = true,
