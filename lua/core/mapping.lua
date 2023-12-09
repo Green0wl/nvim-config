@@ -120,6 +120,9 @@ keymap("n", "<leader>q", function()
   require('dap').disconnect()
 end, opts_desc("Debugging: Terminate session and close UI."))
 
+-- for omnisharp-vim
+keymap('n', '<leader>of', ':OmniSharpFixUsings<CR>', opts_desc("OmniSharp-Vim: Fix usings."))
+
 -- for telescope.nvim
 local M = {}
 
