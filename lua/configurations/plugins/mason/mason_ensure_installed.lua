@@ -12,6 +12,7 @@ M.ensure_installed = {
   "biome",
   "cmake",
   "stylelint_lsp",
-  "jsonls"
+  "jsonls",
+  "typos_lsp"
 }
 return M
