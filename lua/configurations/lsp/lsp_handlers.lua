@@ -3,7 +3,7 @@ local M = {}
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 M.capabilities = capabilities
 
-function M.on_attach(_, bufnr)
+function M.on_attach(client, bufnr)
   local nmap = function(buff, keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -20,9 +20,7 @@ function M.on_attach(_, bufnr)
   -- Mappings.
   nmap(bufnr, 'gD', vim.lsp.buf.declaration, "[G]et [D]eclaration.")
   nmap(bufnr, 'gd', vim.lsp.buf.definition, "[G]et [d]efinition")
-  nmap(bufnr, 'K', vim.lsp.buf.hover, "Get additional info: Like on Hover.")
   nmap(bufnr, 'gi', vim.lsp.buf.implementation, "[G]et [I]mplementation")
-  nmap(bufnr, '<C-k>', vim.lsp.buf.signature_help, "Get Help of signature.")
   nmap(bufnr, '<space>wa', vim.lsp.buf.add_workspace_folder, "[W]orkspace: [A]dd Folder")
   nmap(bufnr, '<space>wr', vim.lsp.buf.remove_workspace_folder, "[W]orkspace: [R]emove Folder")
   nmap(bufnr, '<space>wl', function()
@@ -40,6 +38,14 @@ function M.on_attach(_, bufnr)
     vim.lsp.buf.format({ bufnr = bufnr })
     vim.diagnostic.enable(bufnr)
   end, "[F]ormat current buffer.")
+
+  if client.server_capabilities.signatureHelpProvider then
+    require('lsp-overloads').setup(client, {
+      keymaps = {
+        close_signature = "<A-c>"
+      },
+    })
+  end
 end
 
 return M
