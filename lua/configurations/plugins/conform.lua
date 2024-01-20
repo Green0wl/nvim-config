@@ -10,11 +10,7 @@ return {
       },
       ["*"] = { "codespell" },
       ["_"] = { "trim_whitespace" },
-      format_on_save = {
-        lsp_fallback = true,
-        async = false,
-        timeout = 500
-      }
+      format_on_save = false
     })
 
     vim.keymap.set({ "n", "v" }, "<leader>mp", function()

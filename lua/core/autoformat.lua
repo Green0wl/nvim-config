@@ -14,15 +14,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Create an autocmd that will run *before* we save the buffer.
     --  Run the formatting command for the LSP that has just attached.
-    vim.api.nvim_create_autocmd('BufWritePre', {
+    vim.api.nvim_create_autocmd('BufWritePost', {
       buffer = bufnr,
       callback = function()
-        vim.lsp.buf.format {
-          async = false,
-          filter = function(c)
-            return c.id == client.id
-          end,
-        }
+        vim.lsp.buf.format({ bufnr = bufnr })
+        vim.cmd(":w")
+        vim.diagnostic.enable(bufnr)
       end,
     })
   end,
