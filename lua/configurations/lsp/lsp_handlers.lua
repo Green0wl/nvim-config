@@ -39,10 +39,12 @@ function M.on_attach(client, bufnr)
     vim.lsp.buf.format({ bufnr = bufnr })
     vim.diagnostic.enable(bufnr)
     require('conform').format({
-      lsp_fallback = true,
-      async = true,
-      timeout = 500
-    })
+        lsp_fallback = true,
+        async = true,
+        timeout = 500,
+      },
+      function() vim.cmd(":w") end
+    )
   end, "[F]ormat current buffer.")
 
   if client.server_capabilities.signatureHelpProvider then
