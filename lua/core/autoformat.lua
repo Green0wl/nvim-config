@@ -1,3 +1,9 @@
+ENABLE_AUTOFORMAT = false
+
+vim.api.nvim_create_user_command('ToggleAutoformat', function()
+  ENABLE_AUTOFORMAT = not ENABLE_AUTOFORMAT
+end, {})
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('lsp-attach-format', { clear = true }),
   -- This is where we attach the autoformatting for reasonable clients
@@ -17,6 +23,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.api.nvim_create_autocmd('BufWritePost', {
       buffer = bufnr,
       callback = function()
+        if (not ENABLE_AUTOFORMAT) then return end
+
         vim.lsp.buf.format({ bufnr = bufnr })
         vim.cmd(":w")
         vim.diagnostic.enable(bufnr)

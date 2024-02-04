@@ -22,5 +22,8 @@
         "/home/greenowl/.local/state/nvim/lazy/readme",
         "/home/greenowl/.local/share/nvim/lazy/cmp-path/after",
         "/home/greenowl/.local/share/nvim/lazy/cmp-cmdline/after"
+    ],
+    "diagnostics.globals": [
+        "vim"
     ]
 }
