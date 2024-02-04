@@ -18,15 +18,13 @@ function M.on_attach(client, bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  nmap(bufnr, 'gD', vim.lsp.buf.declaration, "[G]et [D]eclaration.")
-  nmap(bufnr, 'gd', vim.lsp.buf.definition, "[G]et [d]efinition")
-  nmap(bufnr, 'gi', vim.lsp.buf.implementation, "[G]et [I]mplementation")
+  nmap(bufnr, 'gD', vim.lsp.buf.declaration, "LSP: Get Declaration.")
   nmap(bufnr, 'K', vim.lsp.buf.hover, "Get additional info: Like on Hover.")
   nmap(bufnr, '<space>wa', vim.lsp.buf.add_workspace_folder, "[W]orkspace: [A]dd Folder")
   nmap(bufnr, '<space>wr', vim.lsp.buf.remove_workspace_folder, "[W]orkspace: [R]emove Folder")
   nmap(bufnr, '<space>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, "Get [W]orkspace folders [L]ist")
+  end, "LSP: Get Workspace folders List")
 
   nmap(bufnr, '<space>D', vim.lsp.buf.type_definition, "Get [D]efinition")
   nmap(bufnr, '<space>rn', vim.lsp.buf.rename, "[R]e[n]ame")
@@ -34,7 +32,6 @@ function M.on_attach(client, bufnr)
     { 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action,
     { buffer = bufnr, desc = "[C]ode [A]ction", noremap = true, silent = true })
 
-  nmap(bufnr, 'gr', vim.lsp.buf.references, "[G]et [R]eferences")
   nmap(bufnr, '<space>f', function()
     vim.lsp.buf.format({ bufnr = bufnr })
     vim.diagnostic.enable(bufnr)
