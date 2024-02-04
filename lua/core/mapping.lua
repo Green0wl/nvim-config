@@ -262,4 +262,8 @@ function M.neogen_keymap_setup()
     opts_desc("Neogen: Generate function annotations."))
 end
 
+function M.memento_keymap_setup()
+  keymap('n', '<leader>mh', require("memento").toggle, opts_desc("Memento: Open up history popup menu."))
+end
+
 return M
