@@ -5,8 +5,8 @@ return {
   settings = {
     stylelintplus = {
       enable = true,
-      autoFixOnFormat = true,
-      autoFixOnSave = true,
+      autoFixOnFormat = false,
+      autoFixOnSave = false,
       validateOnType = true,
     }
   }
