@@ -33,7 +33,7 @@ function M.on_attach(client, bufnr)
     { buffer = bufnr, desc = "[C]ode [A]ction", noremap = true, silent = true })
 
   nmap(bufnr, '<space>f', function()
-    vim.lsp.buf.format({ bufnr = bufnr })
+    -- vim.lsp.buf.format({ bufnr = bufnr })
     vim.diagnostic.enable(bufnr)
     require('conform').format({
         lsp_fallback = true,
