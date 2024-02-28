@@ -150,21 +150,22 @@ function M.fzfx_keymap_setup()
   keymap('n', '<leader>gc/', ":FzfxGCommits buf_args<cr>",
     opts_desc("Fzfx Git: Get commits list with the current file."))
 
-  -- LSP
   -- LSP: Diagnostic
   keymap('n', '<leader>fd/', ":FzfxLspDiagnostics buf_args<cr>",
     opts_desc("Fzfx LSP: Get diagnostics list in the current Buffer."))
   keymap('n', '<leader>fd', ":FzfxLspDiagnostics<cr>", opts_desc("Fzfx LSP: Get diagnostics list."))
 
   -- LSP: Locations
-  keymap('n', 'gd', ":FzfxLspDefinitions<cr>", opts_desc("Fzfx LSP: Get definition."))
-  keymap('n', 'gt', ":FzfxLspTypeDefinitions<cr>", opts_desc("Fzfx LSP: Get type definition."))
-
-  keymap('n', 'gr', ":FzfxLspReferences<cr>", opts_desc("Fzfx LSP: Get References."))
-  keymap('n', 'gi', ":FzfxLspImplementations<cr>", opts_desc("Fzfx LSP: Get type definition."))
-
   keymap('n', '<leader>ic', ":FzfxLspIncomingCalls<cr>", opts_desc("Fzfx LSP: Get Incoming Calls."))
   keymap('n', '<leader>oc', ":FzfxLspOutgoingCalls<cr>", opts_desc("Fzfx LSP: Get Outgoing Calls."))
+end
+
+function M.glance_keymap_setup()
+  keymap('n', 'gd', "<CMD>Glance definitions<CR>", opts_desc("Glance LSP: Get definition."))
+  keymap('n', 'gt', "<CMD>Glance type_definitions<CR>", opts_desc("Glance LSP: Get type definition."))
+
+  keymap('n', 'gr', "<CMD>Glance references<CR>", opts_desc("Glance LSP: Get References."))
+  keymap('n', 'gi', "<CMD>Glance implementations<CR>", opts_desc("Glance LSP: Get type definition."))
 end
 
 function M.bbye_keymap_setup()
