@@ -7,7 +7,8 @@ return {
         "trivy",
         "codespell",
         "ast-grep",
-        "prettier"
+        "prettier",
+        "checkmake"
       }
     })
   end

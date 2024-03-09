@@ -6,7 +6,8 @@ return {
 
     lint.linters_by_ft = {
       csharp = { "trivy", "codespell" },
-      typescript = { "trivy", "codespell" }
+      typescript = { "trivy", "codespell" },
+      make = { "checkmake" }
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
