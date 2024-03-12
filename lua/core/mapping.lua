@@ -141,7 +141,16 @@ function M.telescope_keymap_setup()
   keymap('n', '<leader>fs', builtin.spell_suggest, opts_desc("Telescope: Spelling Suggestions."))
   keymap('n', '<leader>v', builtin.treesitter, opts_desc("Telescope: Get current file variables."))
 
-  keymap('n', '<A-T>', builtin.git_status, opts_desc("Telescope: Get Git Status."))
+  keymap('n', '<A-T>', function()
+    if is_git_repo() then
+      return builtin.git_status()
+    end
+
+    require("notify")("Not a Git repository.", "warn", {
+      title = "GIT Status",
+      render = "compact"
+    })
+  end, opts_desc("Telescope: Get Git Status."))
 
   keymap('n', '<A-w>', builtin.grep_string,
     opts_desc("Telescope: Search for a string/selection/word in current working directory."))
