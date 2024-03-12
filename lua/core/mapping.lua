@@ -126,6 +126,12 @@ keymap('n', '<leader>of', ':OmniSharpFixUsings<CR>', opts_desc("OmniSharp-Vim: F
 -- for telescope.nvim
 local M = {}
 
+local function is_git_repo()
+  local utils = require('telescope.utils')
+  local _, ret, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--show-toplevel' })
+  return ret == 0
+end
+
 function M.telescope_keymap_setup()
   local builtin = require('telescope.builtin')
   keymap('n', '<leader><leader>', builtin.buffers, opts_desc("Telescope: Find in buffers."))
