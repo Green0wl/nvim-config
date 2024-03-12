@@ -3,7 +3,9 @@ return {
   lazy = true,
   event = "BufEnter",
   config = function()
-    require('illuminate').configure({});
+    require('illuminate').configure({
+      large_file_cutoff = 10000,
+    });
     local bgIlluminated = "#404040";
 
     vim.api.nvim_set_hl(0, 'IlluminatedWordWrite', { bg = bgIlluminated })
