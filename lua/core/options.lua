@@ -3,6 +3,8 @@ vim.g.maplocalleader = ' '
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.g.tmux_navigator_no_mappings = 1
+
 local options = {
   -- General settings
   backup = false,            -- creates a backup file

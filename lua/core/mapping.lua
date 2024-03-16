@@ -282,4 +282,11 @@ function M.memento_keymap_setup()
   keymap('n', '<leader>mh', require("memento").toggle, opts_desc("Memento: Open up history popup menu."))
 end
 
+function M.vim_tmux_navigator_keymap_setup()
+  keymap('n', "<c-l>", "<cmd>TmuxNavigateRight<cr>")
+  keymap('n', "<c-k>", "<cmd>TmuxNavigateUp<cr>")
+  keymap('n', "<c-j>", "<cmd>TmuxNavigateDown<cr>")
+  keymap('n', "<c-h>", "<cmd>TmuxNavigateLeft<cr>")
+end
+
 return M
