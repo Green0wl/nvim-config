@@ -13,6 +13,7 @@ M.ensure_installed = {
   "cmake",
   "stylelint_lsp",
   "jsonls",
-  "typos_lsp"
+  "typos_lsp",
+  "jdtls"
 }
 return M
