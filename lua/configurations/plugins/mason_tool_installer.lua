@@ -8,7 +8,8 @@ return {
         "codespell",
         "ast-grep",
         "prettier",
-        "checkmake"
+        "checkmake",
+        "js-debug-adapter"
       }
     })
   end

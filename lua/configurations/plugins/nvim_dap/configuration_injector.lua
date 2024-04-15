@@ -9,7 +9,15 @@ function M.inject_configurations()
 
     -- if there is something if temp_conf.conf, then use those configurations
     if temp_conf.conf ~= nil then
-      dap.configurations[temp_conf.lang] = temp_conf.conf
+      if type(temp_conf.lang) == "table" then
+        for _, language in ipairs(temp_conf.lang) do
+          if not dap.configurations[language] then
+            dap.configurations[language] = temp_conf.conf
+          end
+        end
+      else
+        dap.configurations[temp_conf.lang] = temp_conf.conf
+      end
     end
   end
 

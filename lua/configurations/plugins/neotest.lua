@@ -40,6 +40,13 @@ return {
       desc = "Neotest: Run Test",
     },
     {
+      "<leader>trr",
+      function()
+        require("neotest").run.run({ strategy = "dap" })
+      end,
+      desc = "Neotest: Debug Nearest",
+    },
+    {
       "<leader>tu",
       function()
         require("neotest").summary.toggle()
