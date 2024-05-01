@@ -17,6 +17,11 @@ return {
       local round_start = { '', 'SymbolUsageRounding' }
       local round_end = { '', 'SymbolUsageRounding' }
 
+      -- Indicator that shows if there are any other symbols in the same line
+      local stacked_functions_content = symbol.stacked_count > 0
+          and ("+%s"):format(symbol.stacked_count)
+          or ''
+
       if symbol.references then
         local usage = symbol.references <= 1 and 'usage' or 'usages'
         local num = symbol.references == 0 and 'no' or symbol.references
@@ -46,11 +51,24 @@ return {
         table.insert(res, round_end)
       end
 
+      if stacked_functions_content ~= '' then
+        if #res > 0 then
+          table.insert(res, { ' ', 'NonText' })
+        end
+        table.insert(res, round_start)
+        table.insert(res, { ' ', 'SymbolUsageImpl' })
+        table.insert(res, { stacked_functions_content, 'SymbolUsageContent' })
+        table.insert(res, round_end)
+      end
+
       return res
     end
 
     require('symbol-usage').setup({
       text_format = text_format,
+      references = { enabled = true, include_declaration = true },
+      definition = { enabled = true },
+      implementation = { enabled = true },
     })
   end
 }
