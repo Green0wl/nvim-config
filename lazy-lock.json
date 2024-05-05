@@ -59,7 +59,6 @@
   "overseer.nvim": { "branch": "master", "commit": "89942ad366c8a9bb93f82411de17dc7c644b4e3b" },
   "paint.nvim": { "branch": "main", "commit": "6ce64212804f425073c61ab0d9c2b034f0435260" },
   "plenary.nvim": { "branch": "master", "commit": "08e301982b9a057110ede7a735dd1b5285eb341f" },
-  "pretty_hover": { "branch": "master", "commit": "69df2831c89455f92b4ad614dc1f4c74d6362f11" },
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "resession.nvim": { "branch": "master", "commit": "4463a78e1783c99466d5f5fb79516d06a5d6f3f8" },
   "sniprun": { "branch": "master", "commit": "9006d4af4f7016523f8619ae1526ab4e7f0df785" },
