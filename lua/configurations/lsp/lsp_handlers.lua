@@ -19,7 +19,7 @@ function M.on_attach(client, bufnr)
 
   -- Mappings.
   nmap(bufnr, 'gD', vim.lsp.buf.declaration, "LSP: Get Declaration.")
-  -- nmap(bufnr, 'K', vim.lsp.buf.hover, "Get additional info: Like on Hover.")
+  nmap(bufnr, 'K', vim.lsp.buf.hover, "Get additional info: Like on Hover.")
   nmap(bufnr, '<space>wa', vim.lsp.buf.add_workspace_folder, "[W]orkspace: [A]dd Folder")
   nmap(bufnr, '<space>wr', vim.lsp.buf.remove_workspace_folder, "[W]orkspace: [R]emove Folder")
   nmap(bufnr, '<space>wl', function()

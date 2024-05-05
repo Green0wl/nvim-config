@@ -9,6 +9,8 @@ for _, sign in ipairs(signs) do
   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
+local _border = "rounded"
+
 local config = {
   virtual_text = false,
   signs = {
@@ -20,7 +22,7 @@ local config = {
   float = {
     focusable = true,
     style = "minimal",
-    border = "rounded",
+    border = _border,
     source = "always",
     header = "",
     prefix = "",
@@ -28,3 +30,15 @@ local config = {
 }
 
 vim.diagnostic.config(config)
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = _border
+  }
+)
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.signature_help, {
+    border = _border
+  }
+)
