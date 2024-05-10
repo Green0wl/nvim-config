@@ -5,6 +5,9 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.g.tmux_navigator_no_mappings = 1
 
+vim.opt.list = true
+vim.opt.listchars = { eol = '↲', }
+
 local options = {
   -- General settings
   backup = false,            -- creates a backup file
