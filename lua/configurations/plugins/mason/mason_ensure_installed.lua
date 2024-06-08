@@ -14,6 +14,7 @@ M.ensure_installed = {
   "stylelint_lsp",
   "jsonls",
   "typos_lsp",
-  "jdtls"
+  "jdtls",
+  "eslint"
 }
 return M
