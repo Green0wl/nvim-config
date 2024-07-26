@@ -14,7 +14,6 @@ return {
         themable = true,
         numbers = "ordinal",
         diagnostics = "nvim_lsp",
-        diagnostics_update_in_insert = true,
         offsets = {
           {
             filetype = "NvimTree",
