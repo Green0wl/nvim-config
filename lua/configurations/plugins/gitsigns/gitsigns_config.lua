@@ -2,6 +2,7 @@ local M = {}
 
 function M.config_func()
   require("gitsigns").setup({
+    signs_staged_enable = true,
     signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
     numhl = true,      -- Toggle with `:Gitsigns toggle_numhl`
     linehl = false,    -- Toggle with `:Gitsigns toggle_linehl`
@@ -10,6 +11,7 @@ function M.config_func()
       interval = 1000,
       follow_files = true,
     },
+    auto_attach = true,
     attach_to_untracked = true,
     current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
     current_line_blame_opts = {
