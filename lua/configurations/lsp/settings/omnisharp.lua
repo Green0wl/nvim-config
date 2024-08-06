@@ -1,3 +1,6 @@
+local uv = require('luv')
+local cpus = uv.available_parallelism()
+
 local omnisharp_opts = {
   cmd = { "omnisharp" },
 
@@ -32,7 +35,7 @@ local omnisharp_opts = {
       -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
       -- true
       AnalyzeOpenDocumentsOnly = true,
-      DiagnosticWorkersThreadCount = 12,
+      DiagnosticWorkersThreadCount = cpus,
     },
     Sdk = {
       -- Specifies whether to include preview versions of the .NET SDK when
