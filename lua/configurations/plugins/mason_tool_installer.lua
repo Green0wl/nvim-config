@@ -9,7 +9,8 @@ return {
         "ast-grep",
         "prettier",
         "checkmake",
-        "js-debug-adapter"
+        "js-debug-adapter",
+        "netcoredbg"
       }
     })
   end

@@ -1,7 +1,9 @@
 local M = {}
 function M.inject_configurations()
-  local dap_ensure_installed =
-      require("configurations.plugins.mason_nvim_dap.dap_ensure_installed").ensure_installed
+  local dap_ensure_installed = vim.tbl_deep_extend(
+    "force",
+    require("configurations.plugins.mason_nvim_dap.dap_ensure_installed").ensure_installed,
+    { "netcoredbg" })
 
   local dap = require('dap')
   for _, value in ipairs(dap_ensure_installed) do
@@ -13,6 +15,10 @@ function M.inject_configurations()
         for _, language in ipairs(temp_conf.lang) do
           if not dap.configurations[language] then
             dap.configurations[language] = temp_conf.conf
+          else
+            for _, conf in ipairs(temp_conf.conf) do
+              dap.configurations[language][#dap.configurations[language] + 1] = conf
+            end
           end
         end
       else
