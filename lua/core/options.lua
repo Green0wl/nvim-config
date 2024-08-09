@@ -1,3 +1,9 @@
+-- TODO: check whether it actually works
+-- a workaround to prevent hanging (#20726: https://github.com/neovim/neovim/issues/20726)
+vim.cmd [[ set foldmethod=expr ]]
+vim.cmd [[ set foldexpr=nvim_treesitter#foldexpr() ]]
+vim.cmd [[ autocmd TermOpen * set foldexpr& ]]
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.loaded_netrw = 1
