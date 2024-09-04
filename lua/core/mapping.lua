@@ -289,4 +289,8 @@ function M.vim_tmux_navigator_keymap_setup()
   keymap('n', "<c-h>", "<cmd>TmuxNavigateLeft<cr>")
 end
 
+function M.undotree_keymap_setup()
+  keymap('n', "<leader>tt", vim.cmd.UndotreeToggle)
+end
+
 return M
