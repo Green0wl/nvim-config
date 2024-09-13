@@ -3,7 +3,7 @@ M.ensure_installed = {
   "lua_ls",
   "clangd",
   "angularls",
-  "tsserver",
+  "ts_ls",
   -- "csharp_ls",
   "omnisharp",
   "cssls",

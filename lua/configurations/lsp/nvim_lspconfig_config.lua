@@ -6,8 +6,6 @@ function M.config_func()
 
   for _, server in pairs(servers) do
     server = vim.split(server, "@")[1]
-    if server == "tsserver" then server = "ts_ls" end
-
     local conf_opts = require("configurations.lsp.settings." .. server)
 
     opts = {
